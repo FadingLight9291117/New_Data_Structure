@@ -1,5 +1,5 @@
 /*
-	ѭ��˫����
+	循环双链表
 */
 #include<stdio.h>
 #include<stdlib.h>
@@ -9,7 +9,7 @@ typedef struct DLNode
 	struct DLNode* next;
 	struct DLNode* prior;
 }DLinkList;
-//ͷ�巨����
+//头插法建表
 void CreateDLinkListF(DLinkList*& L, int a[], int length)
 {
 	L = (DLinkList*)malloc(sizeof(DLinkList));
@@ -26,7 +26,7 @@ void CreateDLinkListF(DLinkList*& L, int a[], int length)
 		p->prior = L;
 	}
 }
-//β�巨����
+//尾插法建表
 void CreateDLinkListR(DLinkList*& L, int a[], int length)
 {
 	L = (DLinkList*)malloc(sizeof(DLinkList));
@@ -43,7 +43,7 @@ void CreateDLinkListR(DLinkList*& L, int a[], int length)
 		L->prior = p;
 	}
 }
-//�������
+//输出链表
 void DispDLinkList(DLinkList* L)
 {
 	DLinkList* p = L->next;
@@ -57,10 +57,10 @@ void DispDLinkList(DLinkList* L)
 
 /*
 	=================================
-	��Ŀ��
-		����жϴ�ͷ����ѭ��˫����L
-		�����������ϵĽڵ㣩�Ƿ�Գ���
-		�ȵ��㷨
+	题目：
+		设计判断带头结点的循环双链表L
+		（含两个以上的节点）是否对称相
+		等的算法
 	=================================
 */
 bool Equal(DLinkList* L)

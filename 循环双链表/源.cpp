@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include"Ñ­»·Ë«Á´±í.h"
+#include"å¾ªç¯åŒé“¾è¡¨.h"
 void testCreateDLinkListF()
 {
 	int a[4] = { 2,6,3,9 };

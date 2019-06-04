@@ -1,4 +1,4 @@
-//ÓĞĞòË³Ğò±í
+//æœ‰åºé¡ºåºè¡¨
 #include<stdio.h>
 #include<stdlib.h>
 #define MAX_SIZE 100
@@ -16,7 +16,7 @@ void SqListInsert(SqList*& L,int e)
 	{
 		i++;
 	}
-	for ( j = L->length; j > i; j--)  //×¢Òâ--
+	for ( j = L->length; j > i; j--)  //æ³¨æ„--
 	{
 		L->data[j] = L->data[j - 1];
 	}

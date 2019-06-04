@@ -1,80 +1,80 @@
 /*
 	==================2019.4.13===============
-	1.���嵥��������ͷ��㣩�ṹ������Ԫ��int���ͣ�
-	2.���嵥�����Ļ������㡣
+	1.定义单链表（带头结点）结构，数据元素int类型；
+	2.定义单链表的基本运算。
 	==========================================
 */
 #include<stdlib.h>
 #include<stdio.h>
-typedef struct LNode {	//���嵥�����ڵ����� 
+typedef struct LNode {	//定义单链表节点类型 
 	int data;
-	struct LNode* next;	//ָ���̽ڵ� 
+	struct LNode* next;	//指向后继节点 
 }LinkList;
 
-//1.����������
-//���彨���������������ַ�����ͷ�巨��β�巨 
-// ��1��ͷ�巨����front
+//1.建立单链表
+//整体建立单链表，有两种方法，头插法和尾插法 
+// （1）头插法建表front
 void CreateListF(LinkList*& L, int a[], int n)
 {
 	LinkList* node;
 	int i;
 	L = (LinkList*)malloc(sizeof(LinkList));
-	L->next = NULL;				//����ͷ�ڵ㣬��next����ΪNULL 
-	for (i = 0; i < n; i++)			//ѭ���������ݽڵ� 
+	L->next = NULL;				//创建头节点，其next域置为NULL 
+	for (i = 0; i < n; i++)			//循环建立数据节点 
 	{
 		node = (LinkList*)malloc(sizeof(LinkList));
-		node->data = a[i];	//�������ݽڵ�node; 
-		node->next = L->next;	//��*node����ͷ�ڵ�� 
+		node->data = a[i];	//创建数据节点node; 
+		node->next = L->next;	//将*node插在头节点后 
 		L->next = node;
 	}
 }
-//��2��β�巨����������rear
+//（2）尾插法建立单链表rear
 void CreateListR(LinkList*& L, int a[], int n)
 {
 	LinkList* r;
 	LinkList* node;
 	int i;
-	L = (LinkList*)malloc(sizeof(LinkList));	//����ͷ�ڵ� 
+	L = (LinkList*)malloc(sizeof(LinkList));	//创建头节点 
 	L->next = NULL;
-	r = L;									//rʼ��ָ��β�ڵ㣬��ʼʱָ��ͷ�ڵ� 
-	for (i = 0; i < n; i++)						//ѭ���������ݽڵ� 
+	r = L;									//r始终指向尾节点，开始时指向头节点 
+	for (i = 0; i < n; i++)						//循环建立数据节点 
 	{
 		node = (LinkList*)malloc(sizeof(LinkList));
-		node->data = a[i];					//�������ݽڵ� 
-		r->next = node;						//��*node����*r֮�� 
+		node->data = a[i];					//创建数据节点 
+		r->next = node;						//将*node插入*r之后 
 		r = node;
 	}
-	r->next = NULL;							//β�ڵ�next����ΪNULL�� 
+	r->next = NULL;							//尾节点next域置为NULL； 
 }
 
-//�������Ļ�������
-//��1����ʼ��������
+//单链表的基本运算
+//（1）初始化单链表
 void InitList(LinkList*& L)
 {
 	L = (LinkList*)malloc(sizeof(LinkList));
 	L->next = NULL;
 }
-//(2)���ٵ�����
+//(2)销毁单链表
 void DestroyList(LinkList*& L)
 {
-	LinkList* pre, * post;//postָ��pre�ĺ�һ���ڵ� 
+	LinkList* pre, * post;//post指向pre的后一个节点 
 	int i;
-	pre = L;				//��ʼʱpreָ��ͷ�ڵ� 
+	pre = L;				//初始时pre指向头节点 
 	post = pre->next;
-	while (post != NULL)	//ɨ�赥���� 
+	while (post != NULL)	//扫描单链表 
 	{
-		free(pre);		//�ͷ�ǰһ���ڵ�pre 
-		pre = post;		//preָ���һ���ڵ�post 
-		post = post->next;//postָ���һ���ڵ� 
+		free(pre);		//释放前一个节点pre 
+		pre = post;		//pre指向后一个节点post 
+		post = post->next;//post指向后一个节点 
 	}
-	free(pre);			//���postָ��null���ͷ�pre 
+	free(pre);			//最后post指向null，释放pre 
 }
-//��3)�жϵ������Ƿ�Ϊ�� 
+//（3)判断单链表是否为空 
 bool ListEmpty(LinkList* L)
 {
 	return L->next == NULL;
 }
-//(4)�������ĳ���
+//(4)求单链表的长度
 int ListLength(LinkList* L)
 {
 	int l = 0;
@@ -86,7 +86,7 @@ int ListLength(LinkList* L)
 	}
 	return l;
 }
-//(5)���������
+//(5)输出单链表
 void DispLinList(LinkList* L)
 {
 	LinkList* p = L->next;
@@ -97,7 +97,7 @@ void DispLinList(LinkList* L)
 	}
 	printf("\n");
 }
-//(6)��������λ��i��Ԫ��ֵ
+//(6)求单链表中位置i的元素值
 bool GetElem(LinkList* L, int i, int& e)
 {
 	LinkList* p = L;
@@ -117,7 +117,7 @@ bool GetElem(LinkList* L, int i, int& e)
 		return true;
 	}
 }
-//(7)��Ԫ��ֵ����
+//(7)按元素值查找
 int LocateElem(LinkList* L, int e)
 {
 	LinkList* p = L->next;
@@ -133,7 +133,7 @@ int LocateElem(LinkList* L, int e)
 	}
 	return 0;
 }
-//��8)��������Ԫ��
+//（8)插入数据元素
 bool ListInsert(LinkList*& L, int i, int e)
 {
 	LinkList* p = L;
@@ -157,7 +157,7 @@ bool ListInsert(LinkList*& L, int i, int e)
 		return true;
 	}
 }
-//��9��ɾ�����ݽڵ�
+//（9）删除数据节点
 bool ListDelete(LinkList*& L, int i, int& e)
 {
 	LinkList* p = L;
@@ -190,70 +190,70 @@ bool ListDelete(LinkList*& L, int i, int& e)
 
 /*
 	==============2019.4.14=================
-	���⣺(�Բ���Ϊ�������㷨���)
-		���һ���㷨��ɾ����������Ԫ��ֵ���
-	��Ԫ�أ��������ֵΨһ��
+	问题：(以查找为基础的算法设计)
+		设计一个算法，删除单链表中元素值最大
+	的元素（假设最大值唯一）
 	========================================
 */
 void delmaxnode(LinkList*& L)
 {
-	LinkList* p = L->next, * pre = L, * maxp = p, * maxpre = pre;//p��preʱһ��ͬ��ָ�� 
+	LinkList* p = L->next, * pre = L, * maxp = p, * maxpre = pre;//p和pre时一对同步指针 
 	while (p != NULL)
 	{
-		if (p->data > maxp->data)						//�Ƚ�p��ֵ�����ֵ 
+		if (p->data > maxp->data)						//比较p的值和最大值 
 		{
-			maxp = p;									//�����󣬸���maxp��maxpre 
+			maxp = p;									//若更大，更改maxp和maxpre 
 			maxpre = pre;
 		}
-		p = p->next;									//p��preͬ������ 
+		p = p->next;									//p和pre同步后移 
 		pre = pre->next;
 	}
-	maxpre->next = maxp->next;					//ɾ��maxp 
-	free(maxp);									//�ͷ�maxp 
+	maxpre->next = maxp->next;					//删除maxp 
+	free(maxp);									//释放maxp 
 }
-/*���㷨��ʱ�临�Ӷ�ΪO(n)*/
+/*该算法的时间复杂度为O(n)*/
 
 /*
 	===============2019.4.16=========================
-	���⣺(�Բ���Ϊ�������㷨���)
-		��һ����ͷ���ĵ�������������һ�����ݽڵ㣩��
-	���һ���㷨��ʹ������Ԫ�ص�����������
+	问题：(以查找为基础的算法设计)
+		有一个带头结点的单链表（至少有一个数据节点），
+	设计一个算法，使其数据元素递增有序排列
 	=================================================
 */
 void sort(LinkList*& L)
 {
 	LinkList* p, * pre, * post;
-	p = L->next->next;			//pָ��L�ĵڶ������ݽڵ�
-	L->next->next = NULL;		//����һ��ֻ��һ�����ݽڵ�������
+	p = L->next->next;			//p指向L的第二个数据节点
+	L->next->next = NULL;		//构造一个只含一个数据节点的有序表
 	while (p != NULL)
 	{
-		post = p->next;			//post����p�ĺ�̽ڵ��ָ��
-		pre = L;				//��������Ŀ�ͷ���бȽϣ�preָ�����*p��ǰ���ڵ�
+		post = p->next;			//post保存p的后继节点的指针
+		pre = L;				//从有序表的开头进行比较，pre指向插入*p的前驱节点
 		while (pre->next != NULL && p->data > pre->next->data)
 		{
-			pre = pre->next;	//��������в��Ҳ���*p��ǰ���ڵ�*pre
+			pre = pre->next;	//在有序表中查找插入*p的前驱节点*pre
 		}
-		p->next = pre->next;	//����*P
+		p->next = pre->next;	//插入*P
 		pre->next = p;
-		p = post;				//*pָ����һ������������ݽڵ�
+		p = post;				//*p指向下一个待插入的数据节点
 	}
 }
-/*���㷨��ʱ�临�Ӷ�ΪO(n^2)*/
+/*该算法的时间复杂度为O(n^2)*/
 
 /*
 	=============2019.4.16==========================
-	���⣺(�Խ���Ϊ�������㷨���)
-		������һ����ͷ���ĵ�����L={a1,a2,a3,...,an}��
-		���һ���㷨�����нڵ�����;
+	问题：(以建表为基础的算法设计)
+		假设有一个带头结点的单链表L={a1,a2,a3,...,an}。
+		设计一个算法将所有节点逆置;
 	================================================
 */
-//ͷ�巨���½���
+//头插法重新建表
 void reverse(LinkList*& L)
 {
 	LinkList* p, * post;
-	p = L->next;		//pָ��L�ĵ�һ������Ԫ��
-	L->next = NULL;		//L������Ԫ���ÿ�
-	while (p != NULL)	//ͷ�巨����
+	p = L->next;		//p指向L的第一个数据元素
+	L->next = NULL;		//L的数据元素置空
+	while (p != NULL)	//头插法建表
 	{
 		post = p->next;
 		p->next = L->next;
@@ -261,40 +261,40 @@ void reverse(LinkList*& L)
 		p = post;
 	}
 }
-/*���㷨��ʱ�临�Ӷ�ΪO(n)*/
+/*该算法的时间复杂度为O(n)*/
 
 /*
 	================2019.4.21=============================
-	���⣺
-		������һ����ͷ���ĵ�����L={a1,b1,a2,b2,...,an,bn}��
-		���һ���㷨�����ֳ�������ͷ�ڵ�ĵ�����L1��L2��
+	问题：
+		假设有一个带头结点的单链表L={a1,b1,a2,b2,...,an,bn}。
+		设计一个算法将其拆分成两个带头节点的单链表L1和L2：
 		L1={a1,a2,...,an}	L2={bn,bn-1,...,b1}
-		Ҫ��L1ʹ��L��ͷ�ڵ㡣
+		要求L1使用L的头节点。
 	======================================================
 */
-//L1β�巨������L2ͷ�巨����
+//L1尾插法建表，L2头插法建表
 void split(LinkList* L, LinkList*& L1, LinkList*& L2)
 {
-	LinkList* p = L->next;	//pָ��ԭ�����ĵ�һ�����ݽڵ�
-	LinkList* r1, * q;		//r1ָ��L1��β�ڵ㣬q����p�ĺ�̽ڵ�
-	L1 = L;					//L1ʹ��L��ͷ�ڵ�
+	LinkList* p = L->next;	//p指向原链表的第一个数据节点
+	LinkList* r1, * q;		//r1指向L1的尾节点，q保存p的后继节点
+	L1 = L;					//L1使用L的头节点
 	r1 = L1;				
-	L2 = (LinkList*)malloc(sizeof(LinkList));//ΪL2����ռ�
-	L2->next = NULL;		//��L2��ָ����ΪNULL
+	L2 = (LinkList*)malloc(sizeof(LinkList));//为L2分配空间
+	L2->next = NULL;		//置L2的指针域为NULL
 	while (p != NULL)
 	{
-		r1->next = p;		//L1β�巨����
+		r1->next = p;		//L1尾插法建表
 		r1 = p;
 		p = p->next;
 		if (p != NULL)
 		{
-			q = p;			//L2ͷ�巨����
+			q = p;			//L2头插法建表
 			p = p->next;
 			q->next = L2->next;
 			L2->next = q;
 		}
 	}
-	r1->next = NULL;		//���L1β�ڵ�next�ÿ�
+	r1->next = NULL;		//最后L1尾节点next置空
 }
-//ʱ�临�Ӷ�ΪO(n)
+//时间复杂度为O(n)
 

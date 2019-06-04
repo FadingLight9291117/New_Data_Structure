@@ -1,5 +1,5 @@
 /*
-	Ñ­»·µ¥Á´±íÁ´±í
+	å¾ªç¯å•é“¾è¡¨é“¾è¡¨
 */
 #include<stdio.h>
 #include<stdlib.h>
@@ -9,7 +9,7 @@ typedef struct LNode
 	struct LNode* next;
 }LinkList;
 
-//Í·²å·¨´´½¨Ñ­»·µ¥Á´±í
+//å¤´æ’æ³•åˆ›å»ºå¾ªç¯å•é“¾è¡¨
 void CreateLinkListF(LinkList*& L, int a[], int length)
 {
 	L = (LinkList*)malloc(sizeof(LinkList));
@@ -23,7 +23,7 @@ void CreateLinkListF(LinkList*& L, int a[], int length)
 		L->next = p;
 	}
 }
-//Î²²å·¨½¨±í
+//å°¾æ’æ³•å»ºè¡¨
 void CreateLinkListR(LinkList*& L, int a[], int length)
 {
 	LinkList* p, * r;
@@ -39,7 +39,7 @@ void CreateLinkListR(LinkList*& L, int a[], int length)
 	}
 	r->next = L;
 }
-//Êä³öµ¥Á´±í
+//è¾“å‡ºå•é“¾è¡¨
 void DispLinkList(LinkList* L) {
 	LinkList* p = L->next;
 	while (p != L)

@@ -1,5 +1,5 @@
 /*
-	Ñ­»·Ë«Á´±í
+	å¾ªç¯åŒé“¾è¡¨
 */
 #include<stdio.h>
 #include<stdlib.h>
@@ -9,7 +9,7 @@ typedef struct DLNode
 	struct DLNode* next;
 	struct DLNode* prior;
 }DLinkList;
-//Í·²å·¨½¨±í
+//å¤´æ’æ³•å»ºè¡¨
 void CreateDLinkListF(DLinkList*& L, int a[], int length)
 {
 	L = (DLinkList*)malloc(sizeof(DLinkList));
@@ -26,7 +26,7 @@ void CreateDLinkListF(DLinkList*& L, int a[], int length)
 		p->prior = L;
 	}
 }
-//Î²²å·¨½¨±í
+//å°¾æ’æ³•å»ºè¡¨
 void CreateDLinkListR(DLinkList*& L, int a[], int length)
 {
 	L = (DLinkList*)malloc(sizeof(DLinkList));
@@ -43,7 +43,7 @@ void CreateDLinkListR(DLinkList*& L, int a[], int length)
 		L->prior = p;
 	}
 }
-//Êä³öÁ´±í
+//è¾“å‡ºé“¾è¡¨
 void DispDLinkList(DLinkList* L)
 {
 	DLinkList* p = L->next;

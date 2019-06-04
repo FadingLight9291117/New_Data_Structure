@@ -1,5 +1,5 @@
 /*
-	Á½¸ö¶şÎ¬±íµÄ×ÔÈ»Á¬½ÓÎÊÌâ
+	ä¸¤ä¸ªäºŒç»´è¡¨çš„è‡ªç„¶è¿æ¥é—®é¢˜
 */
 #include<stdio.h>
 #include<stdlib.h>
@@ -14,12 +14,12 @@ typedef struct Node2
 	int row, col;
 	struct Node1* next;
 }HList;
-//½»»¥Ê½´´½¨µ¥Á´±í
+//äº¤äº’å¼åˆ›å»ºå•é“¾è¡¨
 void CreateTable(HList*& L)
 {
 	int row, col;
 	DList* p, * r;
-	printf("ÇëÊäÈëĞĞÊıºÍÁĞÊı:\n");
+	printf("è¯·è¾“å…¥è¡Œæ•°å’Œåˆ—æ•°:\n");
 	printf("row:");
 	scanf("%d", &row);
 	printf("column:");
@@ -30,7 +30,7 @@ void CreateTable(HList*& L)
 	L->next = NULL;
 	for (int i = 0; i < row; i++)
 	{
-		printf("ÇëÊäÈëµÚ%dĞĞ£º\n", i + 1);
+		printf("è¯·è¾“å…¥ç¬¬%dè¡Œï¼š\n", i + 1);
 		p = (DList*)malloc(sizeof(DList));
 		p->next = NULL;
 		for (int j = 0; j < col; j++)
@@ -48,9 +48,9 @@ void CreateTable(HList*& L)
 			r = p;
 		}
 	}
-	r->next = NULL;//×îºóÎ²Ö¸ÕëËùÖ¸ÔªËØnextÓòÖÃNULL
+	r->next = NULL;//æœ€åå°¾æŒ‡é’ˆæ‰€æŒ‡å…ƒç´ nextåŸŸç½®NULL
 }
-//Ïú»ÙÏßĞÔ±í
+//é”€æ¯çº¿æ€§è¡¨
 void DestroyTable(HList*& L)
 {
 	DList* pre = L->next;
@@ -64,7 +64,7 @@ void DestroyTable(HList*& L)
 	free(pre);
 	free(L);
 }
-//Êä³öµ¥Á´±í
+//è¾“å‡ºå•é“¾è¡¨
 void DispTable(HList* L)
 {
 	DList* p = L->next;
@@ -78,16 +78,16 @@ void DispTable(HList* L)
 		p = p->next;
 	}
 }
-//±íÁ¬½ÓËã·¨
+//è¡¨è¿æ¥ç®—æ³•
 void LinkTables(HList* h1, HList* h2, HList*& h)
 {
 	int i, j;
 	DList* p1 = h1->next;
 	DList* p2;
 	DList* p, * r;
-	printf("Á¬½ÓµÄ×Ö¶ÎÊÇ:µÚ1¸ö±íĞòºÅ£¬µÚ¶ş¸ö±íĞòºÅ£º");
+	printf("è¿æ¥çš„å­—æ®µæ˜¯:ç¬¬1ä¸ªè¡¨åºå·ï¼Œç¬¬äºŒä¸ªè¡¨åºå·ï¼š");
 	scanf("%d%d", &i, &j);
-	//printf("%d %d", i, j);´Ë´¦µ¼ÖÂÎÊÌâ
+	//printf("%d %d", i, j);æ­¤å¤„å¯¼è‡´é—®é¢˜
 	h = (HList*)malloc(sizeof(HList));
 	h->row = 0;
 	h->col = h1->col + h2->col;

@@ -1,5 +1,5 @@
 /*
-	Ë³Ðò±í²âÊÔ³ÌÐò
+	???????????
 */
 #include"SqList.h"
 void test()
@@ -31,7 +31,7 @@ void testDelnode()
 	int x;
 	CreateList(L, a, 8);
 	DispList(L);
-	printf("É¾³ýx=?\n");
+	printf("???x=?\n");
 	scanf_s("%d", &x);
 	delnode1(L, x);
 	DispList(L);

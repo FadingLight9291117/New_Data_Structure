@@ -1,10 +1,10 @@
 #include<stdio.h>
-#include"µ¥Á´±í.h"
-#include"Ë³Ğò±í.h"
+#include"å•é“¾è¡¨.h"
+#include"é¡ºåºè¡¨.h"
 
 /*
 	======================
-	ÓĞĞòË³Ğò±íµÄ¶şÂ·¹é²¢Ëã·¨
+	æœ‰åºé¡ºåºè¡¨çš„äºŒè·¯å½’å¹¶ç®—æ³•
 	======================
 */
 void UnionSqList(SqList* L1, SqList* L2, SqList*& L)
@@ -44,7 +44,7 @@ void UnionSqList(SqList* L1, SqList* L2, SqList*& L)
 
 /*
 	====================
-	ÓĞĞòÁ´±íµÄ¶şÂ·¹é²¢Ëã·¨
+	æœ‰åºé“¾è¡¨çš„äºŒè·¯å½’å¹¶ç®—æ³•
 	====================
 */
 void UnionLinkList(LinkList* L1, LinkList* L2, LinkList*& L)
@@ -52,7 +52,7 @@ void UnionLinkList(LinkList* L1, LinkList* L2, LinkList*& L)
 	LinkList* p1 = L1->next;
 	LinkList* p2 = L2->next;
 	LinkList* p;
-	LinkList* r;//Ö¸ÏòLµÄÎ²½Úµã
+	LinkList* r;//æŒ‡å‘Lçš„å°¾èŠ‚ç‚¹
 	L = (LinkList*)malloc(sizeof(LinkList));
 	L->next = NULL;
 	r = L;
@@ -107,7 +107,7 @@ int main()
 	LinkList* L1;
 	CreateLinkList(L1, a, 4);
 	DispLinkList(L1);*/
-	//Ë³Ğò±í¶şÂ·¹é²¢
+	//é¡ºåºè¡¨äºŒè·¯å½’å¹¶
 	/*SqList* L1, * L2, * L;
 	int a[4] = { 2,4,5,2 };
 	CreateSqList(L1, a, 4);
@@ -117,7 +117,7 @@ int main()
 	DispSqList(L1);
 	DispSqList(L2);
 	DispSqList(L);*/
-	//Á´±í¶şÂ·¹é²¢
+	//é“¾è¡¨äºŒè·¯å½’å¹¶
 	LinkList* L1, * L2, * L;
 	int a[4] = { 2,4,5,2 };
 	CreateLinkList(L1, a, 4);

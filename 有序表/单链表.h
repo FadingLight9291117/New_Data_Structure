@@ -1,9 +1,9 @@
-//ÓĞĞòµ¥Á´±í
+//æœ‰åºå•é“¾è¡¨
 #include<stdlib.h>
 #include<stdio.h>
-typedef struct LNode {	//¶¨Òåµ¥Á´±í½ÚµãÀàĞÍ 
+typedef struct LNode {	//å®šä¹‰å•é“¾è¡¨èŠ‚ç‚¹ç±»å‹ 
 	int data;
-	struct LNode* next;	//Ö¸Ïòºó¼Ì½Úµã 
+	struct LNode* next;	//æŒ‡å‘åç»§èŠ‚ç‚¹ 
 }LinkList;
 
 void LinkListInsert(LinkList*& L, int e)

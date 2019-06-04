@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include"DLinkList.h"
-//²âÊÔ½¨±í
+//æµ‹è¯•å»ºè¡¨
 void testCreateList()
 {
-	//²âÊÔ½¨±í
+	//æµ‹è¯•å»ºè¡¨
 	DLinkList* L1;
 	DLinkList* L2;
 	int a[4] = { 2,4,5,2, };
@@ -12,7 +12,7 @@ void testCreateList()
 	DispList(L1);
 	DispList(L2);
 }
-//²âÊÔ²åÈë
+//æµ‹è¯•æ’å…¥
 void testInsert()
 {
 	DLinkList* L;
@@ -22,7 +22,7 @@ void testInsert()
 	ListInsert(L, 5, 3);
 	DispList(L);
 }
-//²âÊÔÉ¾³ı
+//æµ‹è¯•åˆ é™¤
 void testDelete()
 {
 	DLinkList* L;

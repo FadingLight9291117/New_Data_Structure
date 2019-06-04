@@ -1,16 +1,16 @@
 /*
-	Á´Õ»
+	é“¾æ ˆ
 */
 #include<stdio.h>
 #include<stdlib.h>
-//Á´Õ»µÄ¶¨Òå
+//é“¾æ ˆçš„å®šä¹‰
 typedef struct linknode
 {
 	char data;
 	struct linknode* next;
 }LiStack;
 
-//³õÊ¼»¯Õ»
+//åˆå§‹åŒ–æ ˆ
 void InitStack(LiStack*& s)
 {
 	s = (LiStack*)malloc(sizeof(LiStack));
@@ -27,12 +27,12 @@ void DestroyStack(LiStack*& s)
 	}
 	free(p);
 }
-//ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ
+//åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©º
 bool StackEmpty(LiStack* s)
 {
 	return s->next == NULL;
 }
-//½øÕ»
+//è¿›æ ˆ
 void Push(LiStack*& s, char e)
 {
 	LiStack* p = (LiStack*)malloc(sizeof(LiStack));
@@ -40,7 +40,7 @@ void Push(LiStack*& s, char e)
 	p->next = s->next;
 	s->next = p;
 }
-//³öÕ»
+//å‡ºæ ˆ
 bool Pop(LiStack*& s, int& e)
 {
 	LiStack* p = s->next;
@@ -49,7 +49,7 @@ bool Pop(LiStack*& s, int& e)
 	free(p);
 	return true;
 }
-//È¡Õ»¶¥ÔªËØ
+//å–æ ˆé¡¶å…ƒç´ 
 bool GetTop(LiStack* s, int& e)
 {
 	if (StackEmpty(s))
