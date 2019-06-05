@@ -1,6 +1,4 @@
-/*
-	???????????
-*/
+
 #include"SqList.h"
 void test()
 {
@@ -31,8 +29,8 @@ void testDelnode()
 	int x;
 	CreateList(L, a, 8);
 	DispList(L);
-	printf("???x=?\n");
-	scanf_s("%d", &x);
+	printf("请输入x=?\n");
+	scanf("%d", &x);
 	delnode1(L, x);
 	DispList(L);
 }

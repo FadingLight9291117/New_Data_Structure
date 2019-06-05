@@ -7,7 +7,7 @@
 
 int main()
 {
-	int a[8] = { 1,1,2,2,2,3,3,3 };
+	int a[8] = { 1,1,2,9,2,3,3,3 };
 	SqList* L;
 	CreateSqList(L, a, 8);
 	int k = 1;
