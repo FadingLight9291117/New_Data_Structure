@@ -3,7 +3,7 @@
 	分析：因为有序，重复元素邻近；k记录重复元素个数，其余元素向前平移类似于前面。
 */
 #include<stdio.h>
-#include"顺序表.h"
+#include"SqList.h"
 
 int main()
 {
