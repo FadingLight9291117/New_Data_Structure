@@ -1,19 +1,28 @@
 {
+// 有关 tasks.json 格式的文档，请参见
+    // https://go.microsoft.com/fwlink/?LinkId=733558
+    "version": "2.0.0",
     "tasks": [
         {
             "type": "shell",
-            "label": "g++.exe build active file",
-            "command": "C:\\mingw64\\bin\\g++.exe",
+            "label": "g++ build active file",
+            "command": "/bin/g++",
             "args": [
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
-                "cwd": "C:\\mingw64\\bin"
+                "cwd": "/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
             }
         }
-    ],
-    "version": "2.0.0"
+    ]
 }
