@@ -1,7 +1,10 @@
+/***************/
+/*  冒泡排序    */
+/**************/
 #include<stdio.h>
 void Bubble_Sort(int *a,int n)
 {
-    for (int i = n - 1; i >= 0; i--)
+    for (int i = n - 1; i >= 0; i--)    // 一趟冒泡
     {
         int flag = 0;
         for (int j = 0; j < i; j++)
@@ -11,10 +14,10 @@ void Bubble_Sort(int *a,int n)
                 int temp = a[j];
                 a[j] = a[j+1];
                 a[j+1] = temp;
-                flag = 1;
+                flag = 1;               // 发生了交换
             }
         }
-        if (flag == 0) 
+        if (flag == 0)                  // 全程无交换 
             break;        
     }
 }

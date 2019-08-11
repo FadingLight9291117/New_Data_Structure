@@ -5,16 +5,16 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "g++ build active file",
-            "command": "/bin/g++",
+            "label": "gcc build active file",
+            "command": "/usr/bin/gcc",
             "args": [
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "/bin"
+                "cwd": "/usr/bin"
             },
             "problemMatcher": [
                 "$gcc"
