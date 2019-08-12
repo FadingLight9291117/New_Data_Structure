@@ -18,7 +18,7 @@ void Shell_Sort(int *a, int n)
         }
     }
 }
-
+/*测试*/
 int main(int argc, char const *argv[])
 {
     int a[20] = {2, 4, 6, 1, 12, 42, 67, 4, 89, 76, 3, 9, 12, 32, 56, 54, 23, 83, 14, 28};
