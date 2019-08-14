@@ -81,6 +81,7 @@ int main(int argc, char const *argv[])
     /*测试free结构体后，能否保存结构体中的数组*/
     int *final = heap->data;
     free(heap);
+    heap = NULL; // free（）后指向NULL，避免内存错误
     // for (int i = 1; i <= heap->size; i++)
     // {
     //     printf("%d ",heap->data[i]);
