@@ -12,6 +12,25 @@ typedef struct Heap
     int size;
 }MaxHeap;
 
+/*插入一个元素*/
+void HeapInsertion(MaxHeap *heap,int e)
+{
+    heap->size++;
+    int parent;
+    int child = heap->size;
+    for (parent = heap->size / 2; parent > 0; parent = child / 2)
+    {
+        if (heap->data[parent] < e)
+        {
+            heap->data[child] = heap->data[parent];
+            child = parent;
+        }
+        else
+            break; 
+    }
+    heap->data[child] = e;
+}
+
 /*弹出最大值*/
 int Pop(MaxHeap *&heap)
 {
@@ -78,24 +97,32 @@ int main(int argc, char const *argv[])
     int a[8] = {1,2,4,5,32,5,87,12};
     MaxHeap *heap;
     HeapCreation(heap,a,8);
-    /*测试free结构体后，能否保存结构体中的数组*/
-    int *final = heap->data;
-    free(heap);
-    heap = NULL; // free（）后指向NULL，避免内存错误
-    // for (int i = 1; i <= heap->size; i++)
-    // {
-    //     printf("%d ",heap->data[i]);
-    // } 
-    // printf("\n");
+    // /*测试free结构体后，能否保存结构体中的数组*/
+    // int *final = heap->data;
+    // free(heap);
+    // heap = NULL; // free（）后指向NULL，避免内存错误
+    for (int i = 1; i <= heap->size; i++)
+    {
+        printf("%d ",heap->data[i]);
+    } 
+    printf("\n");
 
-    // int result;
-    // while (true)
-    // {
-    //     result = Pop(heap);
-    //     if (result == -1)
-    //         break;
-    //     printf("%d ",result);
-    // }
-    // printf("\n");
-    // return 0;
+    HeapInsertion(heap,10);
+    HeapInsertion(heap,12);
+    HeapInsertion(heap,100);
+    HeapInsertion(heap,0);
+    HeapInsertion(heap,30);
+
+
+    int result;
+    while (true)
+    {
+        result = Pop(heap);
+        if (result == -1)
+            break;
+        printf("%d ",result);
+    }
+    printf("\n");
+
+    return 0;
 }
