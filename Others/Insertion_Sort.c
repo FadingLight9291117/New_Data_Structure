@@ -24,7 +24,7 @@ int main()
         if (scanf("%d",&a[i]) != 1)
             exit(-1);
     }
-        Insertion_Sort(a,n);
+    Insertion_Sort(a,n);
     for (int i = 0; i < n; i++)
     {
         if (i == n-1 )
