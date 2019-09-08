@@ -41,7 +41,7 @@ void MergeSortByRecurse(int *A, int *TempA, int Left, int RightEnd)
 }
 void Merge_Sort_Recurse(int *A, int N)
 {
-    int *TempA = malloc(sizeof(int) * N);
+    int *TempA = (int*)malloc(sizeof(int) * N);
     MergeSortByRecurse(A, TempA, 0, N - 1);
     free(TempA);
     TempA = NULL;
@@ -94,7 +94,7 @@ void MergeSort(int *A, int *TempA, int N, int len)
 }
 void Merge_Sort(int *A, int N)
 {
-    int *TempA = malloc(sizeof(int)*N);
+    int *TempA = (int *)malloc(sizeof(int)*N);
     int i = 1;
     while (i < N)
     {

@@ -50,8 +50,7 @@ void MSort(int *a, int *tempA, int left, int rightEnd)
 /*统一接口，递归算法*/
 void Merge_Sort(int *a,int n)
 {
-    int *tempA;
-    tempA = malloc(n*sizeof(int));
+    int *tempA = (int *)malloc(n*sizeof(int));
     if (tempA != NULL)
     {
         MSort(a, tempA, 0, n-1);
@@ -60,18 +59,46 @@ void Merge_Sort(int *a,int n)
 }
 
 /*非递归算法*/
-void Merge_pass()
+void Merge_Pass(int *a, int *tempA, int n, int len)
 {
-    
+    int i;
+    for (i = 0; i + 2*len <= n; i += 2*len)
+    {
+        merge(a, tempA, i, i + len, i + 2*len - 1);
+    }
+    if (i + len < n)
+    {
+        merge(a, tempA, i, i + len, n - 1);
+    }
+    else
+    {
+        while (i < n)
+        {
+            tempA[i] = a[i];
+            i++;
+        }
+    }
 }
-void main()
+void Merge_Pass_Sort(int *a, int n)
+{
+    int *tempA = (int *)malloc(sizeof(int)*n);
+    int i = 1;
+    while (i < n)
+    {
+        Merge_Pass(a, tempA, n, i);
+        i *= 2;
+        Merge_Pass(tempA, a, n, i);
+        i *= 2;
+    }
+}
+int main()
 {
     int a[10] = {11,10,82,56,12,16,2,3,4,67};
-    Merge_Sort(a,10);
+    Merge_Pass_Sort(a,10);
     for (int i = 0; i < 10; i++)
     {
         printf("%d ",a[i]);
     }
     printf("\n");
-    
+    return 0;
 }
