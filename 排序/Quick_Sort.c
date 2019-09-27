@@ -36,7 +36,7 @@ int Medium3(int *a, int left, int right)
 /*插入排序*/
 void InsertionSort(int *a,int left, int right)
 {
-    for (int i = left; i <= right; i++)
+    for (int i = left + 1; i <= right; i++)
     {
         int temp = a[i];                        // 摸下一张牌
         int j;
