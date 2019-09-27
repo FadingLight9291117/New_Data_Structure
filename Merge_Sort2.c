@@ -1,5 +1,6 @@
 /*归并排序*/
 #include<stdio.h>
+#include<stdlib.h>
 /*二路归并*/
 /*核心算法*/
 void merge(int *A, int *TempA, int left, int right ,int rightEnd)
@@ -26,29 +27,46 @@ void merge(int *A, int *TempA, int left, int right ,int rightEnd)
     {
         TempA[temp++] = A[right++];
     }
-    /*将临时数组的数据复制回原数组*/
-    for (int i = 0; i <= num; i++)
-    {
-        A[rightEnd] = TempA[rightEnd];
-        rightEnd--;
-    }
 }
 /*非递归算法*/
 void MergeSort(int* A, int* TempA, int n, int len)
 {
-    for (int i = 0; i < n; i += 2 * len)
+	int i;
+    for (i = 0; i + 2 * len <= n; i += 2 * len)
     {
-        
+        merge(A, TempA, i, i + len, i + 2 * len - 1);
     }
+	if (i + len <= n)
+	{
+		merge(A, TempA, i, i + len, n - 1);
+	}
+	else
+	{
+		while (i < n)
+		{
+			TempA[i] = A[i];
+			i++;
+		}
+	}
+}
+void Merge_Sort(int* A, int n)
+{
+	int* TempA = (int*)malloc(sizeof(int) * n);
+	int len = 1;
+	while (len < n)
+	{
+		MergeSort(A, TempA, n, len);
+		len *= 2;
+		MergeSort(TempA, A, n, len);
+	}
 }
 
 int main()
 {
     int A[6] = {1,4,6,7,2,5};
-    int TempA[6];
-    MergeSort(A, TempA, 0, 4, 5);
-    for(int i = 0; i < 6; i++)
-    {
-        printf("%d ", A[i]);
-    }
+	Merge_Sort(A, 6);
+	for (int i = 0; i < 6; i++)
+	{
+		printf("%d ", A[i]);
+	}
 }
