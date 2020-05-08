@@ -2,16 +2,16 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "g++ build active file",
-            "command": "/usr/bin/g++",
+            "label": "gcc.exe build active file",
+            "command": "C:\\Users\\Fadin\\mingw64\\bin\\gcc.exe",
             "args": [
                 "-g",
                 "${file}",
                 "-o",
-                "${workspaceFolder}/out/${fileBasenameNoExtension}.out"
+                "${workspaceFolder}\\out\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "/usr/bin"
+                "cwd": "C:\\Users\\Fadin\\mingw64\\bin"
             }
         }
     ],
