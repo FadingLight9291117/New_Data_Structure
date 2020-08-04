@@ -3,7 +3,6 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 /*
     两数交换函数
 */
@@ -19,23 +18,23 @@ void swap(int *a, int *b)
     首尾和中间三个数中间大小的作为主元，并放在倒数第二个位置
     返回主元
 */
-int medium3(int *arr, int left, int right)
+int medium3(int *a, int left, int right)
 {
-    int center = (left + right) / 2;
-    if (arr[left] > arr[center])
+     int center = (left + right) / 2;
+    if (a[left] > a[center])
     {
-        swap(arr + left, arr + center);
+        swap(&a[left], &a[center]);
     }
-    if (arr[center] > arr[right])
+    if (a[center] > a[right])
     {
-        swap(arr + center, arr + right);
+        swap(&a[center], &a[right]);
     }
-    if (arr[left] < arr[center])
+    if (a[left] > a[center])
     {
-        swap(arr + left, arr + center);
+        swap(&a[center], &a[left]);
     }
-    swap(arr + center, arr + right - 1);
-    return arr[right - 1];
+    swap(&a[center], &a[right - 1]); // 将主元放入倒数第二个位置
+    return a[right - 1];
 }
 
 /*
@@ -67,9 +66,9 @@ void insert_sort(int *arr, int left, int right)
 */
 void quickSort(int *arr, const int left, const int right)
 {
-    int cutOff = 5;                            //  定阈值
-    if (right - left >= cutOff)                // 元素个数大于阈值，使用快排
-    {                                          // 快速排序
+    int cutOff = 10;                            //  定阈值
+    if (right - left >= cutOff)                 // 元素个数大于阈值，使用快排
+    {                                           // 快速排序
         int pivot = medium3(arr, left, right); // 选主元
         int l = left - 1;
         int r = right - 2;
@@ -113,10 +112,11 @@ void quick_sort(int *arr, int len)
 /*
     测试
 */
+#define n 10000
+#include <stdlib.h>
 int main()
 {
-    int n = 100;
-    int a[100];
+    int a[n];
     for (int i = 0; i < n; i++)
     {
         a[i] = rand();
@@ -125,10 +125,11 @@ int main()
     for (int i = 0; i < n; i++)
     {
         printf("%d ", a[i]);
-        if (i > 0 && a[i] < a[i-1])
+        if (i > 0 && a[i] < a[i - 1])
         {
             printf("error");
             break;
         }
     }
+    return 0;
 }

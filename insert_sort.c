@@ -3,6 +3,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 /*
     插入排序函数
     params:
@@ -26,11 +27,16 @@ void insert_sort(int *arr, int len)
 /*
     测试
 */
+#define N 500000
 int main()
 {
-    int a[8] = {3, 12, 5, 2, -2, 10, -29, 4};
+    int a[N];
+    for (int i = 0; i < N; i++)
+    {
+        a[i] = rand();
+    }
     insert_sort(a, 8);
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < N; i++)
     {
         printf("%d ", a[i]);
     }
